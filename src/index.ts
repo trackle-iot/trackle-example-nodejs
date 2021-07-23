@@ -3,11 +3,11 @@ import wlogger from './logger';
 const logger = wlogger(module);
 
 const DEVICE_ID = 'IlTuoId'; // string
-const PRIVATE_KEY_PEM = 'LaTuaChiavePrivata'; // PEM string
+const PRIVATE_KEY = 'LaTuaChiavePrivataPEM'; // PEM string
 
 /*
-  Or get PEM string from file
-  const PRIVATE_KEY_PEM = fs.readFileSync('PercorsoDellaTuaChiavePrivata').toString();
+  Or get DER binary from file
+  const PRIVATE_KEY = fs.readFileSync('PercorsoDellaTuaChiavePrivataDER'); // DER file
 */
 
 /* 
@@ -46,7 +46,7 @@ Trackle.subscribe('sub', (event: string, data: string) => {
 }, 'ALL_DEVICES');
 
 /* Begin and connect */
-Trackle.begin(DEVICE_ID, PRIVATE_KEY_PEM).then(() => {
+Trackle.begin(DEVICE_ID, PRIVATE_KEY).then(() => {
   Trackle.connect();
 
   /* Publish an event every 10s */
